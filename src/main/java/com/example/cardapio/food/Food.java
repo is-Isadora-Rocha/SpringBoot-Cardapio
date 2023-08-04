@@ -10,6 +10,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 @Entity
+@EqualsAndHashCode(of = "id")
 @Table(name = "foods")
 public class Food {
 
@@ -24,4 +25,10 @@ public class Food {
 
     @Column(name = "price")
     private Integer price;
+
+    public Food(FoodRequestDTO data){
+        this.image = data.image();
+        this.price = data.price();
+        this.title = data.title();
+    }
 }
